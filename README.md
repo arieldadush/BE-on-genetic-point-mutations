@@ -1,11 +1,23 @@
 # BE-on-genetic-point-mutations
 As genome-editing approaches are rapidly progressing, it stands to reason that a revolution in the field of genetic diseases is just around the corner. Hopefully, this work will help scientists and clinicians design successful targets for therapies, marching medicine to a future in which curing genetic diseases is feasible.  
 
+# Genomic annotations
+We assume you have the following files:
+1. ```CDS.fa```
+2. ```hg38.fa```
+3. ```GRCh38_latest_protein_05_sep.faa```
+
 # Installation and Requirements
 ## Dependencies
 bigBedToBed
 
 [Python 3.10.4](https://www.python.org/downloads/release/python-3104/)
+
+[BLAT](https://genome.ucsc.edu/cgi-bin/hgBlat)
+
+[SIFT](https://sift.bii.a-star.edu.sg/index.html)
+
+[GTEx Gene TPMs](https://gtexportal.org/home/datasets)
 
 ## Human point mutations data
 We downloaded the database from two websites:
@@ -52,8 +64,34 @@ Filtering the original database so that it contains only the target that is rele
   ```20_seq_before_after_Erez.sh```
   
 4. Adding a RNA sequence of 20 bases before and after the mutation
-  Download all CDS in FASTA format, in order to use the sequences to find the RNA sequences around the pamutation.
+  Download all CDS in FASTA format from Table Browser, in order to use the sequences to find the RNA sequences around the amutation.
   
   ```add_rna_seq_28.03.ipynb```
-
-
+  
+5. Adding off-target and ADAR motif
+  Calculation using BLAT of the number of hits that can be obtained for the RNA sequence and the DNA sequence.
+  Adding information on ADAR motif for editing
+  
+  ```add_off_target.ipynb```
+  
+6. run SIFT tool
+  In order to check whether the editing is better than the mutation in the case where it is only possible to improve and not correct, we created files that are           suitable for running in SIFT. After running read the results of SIFT.
+  
+  ```add_sift_for_new_ff.ipynb```
+  
+  merge all results table
+  
+  ```merge_final_df_09_01_23.ipynb```
+  
+  7. Add SIFT score and allele frequency
+    
+    ```add_design.ipynb```
+  8. Add local off-target
+  
+    ```add_local_off_target.ipynb```
+    
+  9. Brain and liver delivery
+  
+    ```merge_gtex_tables.ipynb```
+  
+    
