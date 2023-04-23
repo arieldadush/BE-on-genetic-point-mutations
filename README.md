@@ -3,9 +3,12 @@ As genome-editing approaches are rapidly progressing, it stands to reason that a
 
 # Genomic annotations
 We assume you have the following files:
-1. ```CDS.fa```
+1. ```hg38_ncbiRefSeqCurated_cds.fa```
 2. ```hg38.fa```
 3. ```GRCh38_latest_protein_shortHeders.faa```
+4. ```RefSeq Curated.gtf```
+5. ```GTEx Gene TPMs.gct```
+6. ```GTEx Sample Attribute.txt```
 
 # Installation and Requirements
 ## Dependencies
@@ -17,7 +20,6 @@ bigBedToBed
 
 [SIFT](https://sift.bii.a-star.edu.sg/index.html)
 
-[GTEx Gene TPMs](https://gtexportal.org/home/datasets)
 
 ## Human point mutations data
 We downloaded the database from two websites:
@@ -31,12 +33,12 @@ We downloaded this database because it contains a lot of fields and information.
 We downloaded the database as a bigBED file, using the following bash command:
 ```wget http://hgdownload-euro.soe.ucsc.edu/gbdb/hg38/bbi/clinvar/clinvarMain.bb```
 
-The downloaded file is bigBED fromat, so I converted it to a BED file using the command:
+The downloaded file is bigBED fromat, so we converted it to a BED file using the command:
 ```bigBedToBed "/private5/Projects/dadush/clinvar_base_editing/clinvarMain.bb" "/private5/Projects/dadush/clinvar_base_editing/clinvarMain.bed"```
 
 **clinVar FTP site**
 
-From the official website of clinVar you can reach the FTP site where you can download the database as a VCF file. The file itself contains less information than the database we downloaded at UCSC, but it is updated every month and also contains information about the distribution of the submitters' interpretation in cases where there is a conflict.
+From the official website of clinVar you can reach the FTP site where you can download the database as a VCF file. The file itself contains less information than the database we downloaded at UCSC, but it is updated every month and also contains information about the distribution of the submitters interpretation in cases where there is a conflict.
 download command:
 ``` wget https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/archive_2.0/2021/clinvar_20211107.vcf.gz```
 
@@ -54,8 +56,7 @@ Filtering the original database so that it contains only the target that is rele
 
 2. Arranging the database and adding a reading frame
 
-  Download the table ![image](https://user-images.githubusercontent.com/73337793/233617219-234a54d7-7776-4187-bb9d-b159171879e7.png)
-  Using the table we calculate the reading frame in which the mutation is located
+    Using the table ```RefSeq Curated.gtf``` we calculate the reading frame in which the mutation is located
   
   ```order_FF_27.03.ipynb```
   
