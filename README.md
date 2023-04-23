@@ -5,7 +5,7 @@ As genome-editing approaches are rapidly progressing, it stands to reason that a
 We assume you have the following files:
 1. ```CDS.fa```
 2. ```hg38.fa```
-3. ```GRCh38_latest_protein_05_sep.faa```
+3. ```GRCh38_latest_protein_shortHeders.faa```
 
 # Installation and Requirements
 ## Dependencies
