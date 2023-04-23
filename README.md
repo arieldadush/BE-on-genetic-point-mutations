@@ -84,14 +84,15 @@ Filtering the original database so that it contains only the target that is rele
   ```merge_final_df_09_01_23.ipynb```
   
   7. Add SIFT score and allele frequency
+
+```add_design.ipynb```
     
-    ```add_design.ipynb```
   8. Add local off-target
   
-    ```add_local_off_target.ipynb```
+```add_local_off_target.ipynb```
     
   9. Brain and liver delivery
   
-    ```merge_gtex_tables.ipynb```
+```merge_gtex_tables.ipynb```
   
     
